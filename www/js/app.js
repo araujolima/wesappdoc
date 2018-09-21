@@ -81,185 +81,189 @@ var translationspt = {
   }
 };
 
-angular.module('app', ['ionic','ngCordova','ngLocalStorage','app.controllers', 'app.services', 'app.filters','pascalprecht.translate',
+angular.module('app', ['ionic', 'ngCordova', 'ngLocalStorage', 'app.controllers', 'app.services', 'app.filters', 'pascalprecht.translate',
   'app.documents-controller',
-  'app.document-persist-controller','app.profile-controller','ui.utils.masks','ionic-datepicker'])
+  'app.document-persist-controller', 'app.profile-controller', 'ui.utils.masks', 'ionic-datepicker'])
 
-.run(function($ionicPlatform, $rootScope,$ionicHistory,$state,$localStorage,$ionicHistory) {
+  .run(function ($ionicPlatform, $rootScope, $ionicHistory, $state, $localStorage, $ionicHistory) {
 
-  $rootScope.style = "theme2";
-  $rootScope.stylea = "css/" + $rootScope.style + "/style.css";
-  $rootScope.styleb = "css/" + $rootScope.style + "/home-style.css";
-  //$rootScope.lang = "en-UK";
-  $rootScope.lang = "pt-BR";
-  //$rootScope.baseURL = 'http://www.infohds.com.br';
-  // Development
-  //$rootScope.baseURL = 'http://localhost/wesapp';
-  // Production
-  $rootScope.baseURL = 'https://worldeyesolutionsdev.com/wesapp';
-  
-  //$rootScope.baseURL = 'http://127.0.0.1';
-  $rootScope.user = {};
+    $rootScope.style = "theme2";
+    $rootScope.stylea = "css/" + $rootScope.style + "/style.css";
+    $rootScope.styleb = "css/" + $rootScope.style + "/home-style.css";
+    //$rootScope.lang = "en-UK";
+    $rootScope.lang = "pt-BR";
+    //$rootScope.baseURL = 'http://www.infohds.com.br';
+    // Development
+    //$rootScope.baseURL = 'http://localhost/wesapp';
+    // Production
+    $rootScope.baseURL = 'https://worldeyesolutionsdev.com/wesapp';
 
-  //$rootScope.baseURL = 'http://192.168.25.18:8080';
-  //$rootScope.baseURL = 'http://lucasgreis92.hopto.org:8080';
-  
-  $ionicPlatform.ready(function() {
-
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-  $rootScope.myGoBack = function() {
-    $ionicHistory.goBack();
-  };
-  $rootScope.goTabHome = function() {
-    $state.go('tab.home');
-  };
-
-  $rootScope.logout = function(){
-    var key = 'user';
-    $localStorage.putObject(key,{});
+    //$rootScope.baseURL = 'http://127.0.0.1';
     $rootScope.user = {};
-	$ionicHistory.clearHistory();
-    $ionicHistory.clearCache();
-    $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });   
-    $state.go('home');
-  }
-  $rootScope.goBenefiPesist = function(){
-    $state.go('tab.benefi-persist');
-  }
-  //$rootScope.goHomeBenefi = function(moedaDestino,sended,valorDestino,fee,rate){
-  //  $state.go('tab.home-benefi',{moedaDestino:moedaDestino,sended:sended,valorDestino:valorDestino,fee:fee,rate:rate});
-  //}
-  $rootScope.goHomeBenefi = function(moedaDestino,sended,valorDestino,fee,rate,curpairdest,ctrycode){
-    $state.go('tab.home-benefi',{moedaDestino:moedaDestino,sended:sended,valorDestino:valorDestino,fee:fee,rate:rate,curpairdest:curpairdest,ctrycode:ctrycode});
-  }
 
-  $rootScope.goDocuments = function(){
-    $state.go('tab.documents');
-  }
+    //$rootScope.baseURL = 'http://192.168.25.18:8080';
+    //$rootScope.baseURL = 'http://lucasgreis92.hopto.org:8080';
 
-  $rootScope.goDocumentPersist = function(){
-	  //alert('ola');
-    $state.go('tab.document-perist');
-  }
-  
-})
+    $ionicPlatform.ready(function () {
 
-/*.config(['$translateProvider', function ($translateProvider) {
-  // add translation table
-  $translateProvider
-    .translations('en', translations)
-    .preferredLanguage('en');
-}]);*/
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$httpProvider,$translateProvider) {
-  $ionicConfigProvider.tabs.position('bottom');
+      }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
+    $rootScope.myGoBack = function () {
+      $ionicHistory.goBack();
+    };
+    $rootScope.goTabHome = function () {
+      $state.go('tab.home');
+    };
 
-  $translateProvider
-    .translations('en', translations)
-    .translations('pt', translationspt)
-	.useSanitizeValueStrategy('escape')
-    .preferredLanguage('en');
+    $rootScope.logout = function () {
+      var key = 'user';
+      $localStorage.putObject(key, {});
+      $rootScope.user = {};
+      $ionicHistory.clearHistory();
+      $ionicHistory.clearCache();
+      $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
+      $state.go('home');
+    }
+    $rootScope.goBenefiPesist = function () {
+      $state.go('tab.benefi-persist');
+    }
+    //$rootScope.goHomeBenefi = function(moedaDestino,sended,valorDestino,fee,rate){
+    //  $state.go('tab.home-benefi',{moedaDestino:moedaDestino,sended:sended,valorDestino:valorDestino,fee:fee,rate:rate});
+    //}
+    $rootScope.goHomeBenefi = function (moedaDestino, sended, valorDestino, fee, rate, curpairdest, ctrycode) {
+      $state.go('tab.home-benefi', { moedaDestino: moedaDestino, sended: sended, valorDestino: valorDestino, fee: fee, rate: rate, curpairdest: curpairdest, ctrycode: ctrycode });
+    }
 
-	/*$translateProvider.translations('en', {
-		hello_message: "Howdy",
-		goodbye_message: "Goodbye"
-	});
-	$translateProvider.translations('es', {
-		hello_message: "Hola",
-		goodbye_message: "Adios"
-	});
-	$translateProvider.preferredLanguage("en");
-	$translateProvider.fallbackLanguage("en");*/
+    $rootScope.goDocuments = function () {
+      $state.go('tab.documents');
+    }
 
-  // ajustes para ws em php
-  /*$httpProvider.defaults.headers.common = {};
-  $httpProvider.defaults.headers.post = {};
-  $httpProvider.defaults.headers.put = {};
-  $httpProvider.defaults.headers.patch = {};**/
+    $rootScope.goDocumentPersist = function () {
+      //alert('ola');
+      $state.go('tab.document-perist');
+    }
 
-
-  
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
-
-
-
-
-
-
-
-  // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
   })
 
-   
+  /*.config(['$translateProvider', function ($translateProvider) {
+    // add translation table
+    $translateProvider
+      .translations('en', translations)
+      .preferredLanguage('en');
+  }]);*/
 
-  .state('tab.profile', {
-    url: '/profile',
-    cache:false,
-    views: {
-      'tab-profile': {
-        templateUrl: 'templates/profile.html',
-        controller: 'ProfileController'
+  .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
+    document.addEventListener("deviceready", function () {
+      console.log(navigator.camera);
+    }, false);
+
+    $ionicConfigProvider.tabs.position('bottom');
+
+    $translateProvider
+      .translations('en', translations)
+      .translations('pt', translationspt)
+      .useSanitizeValueStrategy('escape')
+      .preferredLanguage('en');
+
+    /*$translateProvider.translations('en', {
+      hello_message: "Howdy",
+      goodbye_message: "Goodbye"
+    });
+    $translateProvider.translations('es', {
+      hello_message: "Hola",
+      goodbye_message: "Adios"
+    });
+    $translateProvider.preferredLanguage("en");
+    $translateProvider.fallbackLanguage("en");*/
+
+    // ajustes para ws em php
+    /*$httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};**/
+
+
+
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
+    // Each state's controller can be found in controllers.js
+    $stateProvider
+
+
+
+
+
+
+
+      // setup an abstract state for the tabs directive
+      .state('tab', {
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
+      })
+
+
+
+      .state('tab.profile', {
+        url: '/profile',
+        cache: false,
+        views: {
+          'tab-profile': {
+            templateUrl: 'templates/profile.html',
+            controller: 'ProfileController'
+          }
+        }
+      })
+
+      .state('tab.documents', {
+        url: '/documents',
+        cache: false,
+        views: {
+          'tab-profile': {
+            templateUrl: 'templates/documents.html',
+            controller: 'DocumentsController'
+          }
+        }
+      })
+
+      .state('tab.document-perist', {
+        url: '/document-persist',
+        cache: false,
+        views: {
+          'tab-profile': {
+            templateUrl: 'templates/document-persist.html',
+            controller: 'DocumentPersistController'
+          }
+        }
+      })
+
+    // Each tab has its own nav history stack:
+
+    /*.state('tab.dash', {
+      url: '/dash',
+      views: {
+        'tab-dash': {
+          templateUrl: 'templates/tab-dash.html',
+          controller: 'DashCtrl'
+        }
       }
-    }
-  })
-
-  .state('tab.documents',{
-    url:'/documents',
-    cache:false,
-    views:{
-      'tab-profile':{
-        templateUrl:'templates/documents.html',
-        controller:'DocumentsController'     
-      }
-    }
-  })
-
-.state('tab.document-perist',{
-    url:'/document-persist',
-    cache:false,
-    views:{
-      'tab-profile':{
-        templateUrl:'templates/document-persist.html',
-        controller:'DocumentPersistController'     
-      }
-    }
-  })
-
-  // Each tab has its own nav history stack:
-
-  /*.state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  }) **/
+    }) **/
 
 
-  // if none of the above states are matched, use this as the fallback
-  //$urlRouterProvider.otherwise('/tab/profile');
-  $urlRouterProvider.otherwise('/tab/document-persist');
+    // if none of the above states are matched, use this as the fallback
+    //$urlRouterProvider.otherwise('/tab/profile');
+    $urlRouterProvider.otherwise('/tab/document-persist');
     //$urlRouterProvider.otherwise('/home');
 
   });
