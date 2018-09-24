@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.weyesol.westransfer;
+package io.ionic.starter;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

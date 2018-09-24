@@ -15,7 +15,11 @@
     "gulp-minify-css": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
-    "npm-git-install": "^0.3.0"
+    "npm-git-install": "^0.3.0",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-ionic-webview": "^2.0.0",
+    "cordova-plugin-ionic-keyboard": "^2.0.5"
   },
   "devDependencies": {
     "@ionic/cli-plugin-cordova": "1.4.0",
@@ -35,9 +39,6 @@
     "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [],
-  "scripts": {
-    "install": "npm-git install"
-  },
   "gitDependencies": {
     "private-package-name": "git@private.git.server:user/repo.git#revision",
     "public-package-name": "https://github.com/user/repo.git#revision"
@@ -46,7 +47,11 @@
     "plugins": {
       "cordova-plugin-camera": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "android"
