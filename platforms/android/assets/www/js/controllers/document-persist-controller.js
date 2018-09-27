@@ -192,41 +192,73 @@ angular.module('app.document-persist-controller', ['app.tipoDocService', 'app.co
 		// };
 
 
+		// $scope.getCamera = function (ieFront) {
+		// 	function onSuccess(imageURI) {
+		// 		console.log('imageData - ' + imageURI);
+		// 		if (ieFront) {
+		// 			$scope.document.frontImg = imageURI;
+		// 			//$scope.selected = 'data:image/png;base64,'+imageURI;
+		// 		} else {
+		// 			$scope.document.backImg = imageURI;
+		// 			//$scope.selected = 'data:image/png;base64,'+imageURI;
+		// 		}
+		// 		if (!$scope.$$phase)
+		// 			$scope.$digest();
+		// 	}
+		// 	function onFail(message) {
+		// 		if (message !== 'Camera cancelled.') {
+		// 			window.plugins.toast.showWithOptions(
+		// 				{
+		// 					message: message,
+		// 					duration: "long",
+		// 					position: "center"
+		// 				});
+		// 		}
+		// 		alert('Failed because: ' + message);
+		// 	}
+		// 	try {
+		// 		navigator.camera.getPicture(onSuccess, onFail, {
+		// 			quality: 75,
+		// 			destinationType: Camera.DestinationType.FILE_URI,
+		// 			encodingType: 0,
+		// 			targetWidth: 1000,
+		// 			correctOrientation: true
+		// 		});
+		// 	} catch (e) {
+		// 		console.log("camera error -" + e);
+		// 	}
+		// };
+
 		$scope.getCamera = function (ieFront) {
-			function onSuccess(imageURI) {
-				console.log('imageData - ' + imageURI);
-				if (ieFront) {
-					$scope.document.frontImg = imageURI;
-					//$scope.selected = 'data:image/png;base64,'+imageURI;
-				} else {
-					$scope.document.backImg = imageURI;
-					//$scope.selected = 'data:image/png;base64,'+imageURI;
-				}
-				if (!$scope.$$phase)
-					$scope.$digest();
-			}
-			function onFail(message) {
-				if (message !== 'Camera cancelled.') {
-					window.plugins.toast.showWithOptions(
-						{
-							message: message,
-							duration: "long",
-							position: "center"
-						});
-				}
-				alert('Failed because: ' + message);
-			}
-			try {
-				navigator.camera.getPicture(onSuccess, onFail, {
-					quality: 75,
-					destinationType: Camera.DestinationType.FILE_URI,
-					encodingType: 0,
-					targetWidth: 1000,
-					correctOrientation: true
+			console.log(ieFront);
+			
+			document.addEventListener("deviceready", function () {
+
+				var options = {
+					quality: 100,
+					destinationType: Camera.DestinationType.DATA_URL,
+					encodingType: Camera.EncodingType.JPEG,
+					targetWidth: 250,
+					targetHeight: 200
+				};
+
+				$cordovaCamera.getPicture(options).then(function (imageData) {
+
+					if (ieFront) {
+						$scope.document.frontImg = imageURI;
+						//$scope.selected = 'data:image/png;base64,'+imageURI;
+					} else {
+						$scope.document.backImg = imageURI;
+						//$scope.selected = 'data:image/png;base64,'+imageURI;
+					}
+
+
+				}, function (err) {
+					console.log(err);
+					
 				});
-			} catch (e) {
-				console.log("camera error -" + e);
-			}
+
+			}, false);
 		};
 
 		/*

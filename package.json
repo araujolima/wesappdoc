@@ -4,9 +4,15 @@
   "description": "realmoney: An Ionic project",
   "dependencies": {
     "@ionic-native/sms": "^3.10.2",
-    "cordova-android": "6.2.3",
+    "android": "0.0.8",
+    "cordova-android": "^6.2.3",
     "cordova-plugin-camera": "~2.4.0",
     "cordova-plugin-datepicker": "git+https://github.com/VitaliiBlagodir/cordova-plugin-datepicker.git",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-file": "~4.3.2",
+    "cordova-plugin-ionic-keyboard": "^2.0.5",
+    "cordova-plugin-ionic-webview": "^2.0.0",
+    "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "*",
     "cordova-plugin-whitelist": "git+https://github.com/apache/cordova-plugin-whitelist.git",
     "datepicker-for-ionic": "^1.1.7",
@@ -15,11 +21,7 @@
     "gulp-minify-css": "^0.3.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
-    "npm-git-install": "^0.3.0",
-    "cordova-plugin-device": "2.0.2",
-    "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-plugin-ionic-webview": "^2.0.0",
-    "cordova-plugin-ionic-keyboard": "^2.0.5"
+    "npm-git-install": "^0.3.0"
   },
   "devDependencies": {
     "@ionic/cli-plugin-cordova": "1.4.0",
@@ -51,10 +53,9 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-file": {}
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   }
 }
